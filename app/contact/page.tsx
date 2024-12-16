@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Layout from '../../components/Layout'
+import Layout from '../components/Layout'
 import { MapPin, Phone, Mail } from 'lucide-react'
 
 export default function Contact() {

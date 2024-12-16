@@ -1,6 +1,6 @@
 'use client'
 
-import Layout from '../../components/Layout'
+import Layout from '../components/Layout'
 import { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 

@@ -1,4 +1,4 @@
-import Layout from '../../components/Layout'
+import Layout from '../components/Layout'
 import { CheckCircle } from 'lucide-react'
 
 const services = [
