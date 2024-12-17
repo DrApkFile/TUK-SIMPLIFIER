@@ -1,25 +1,27 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import Layout from '../components/Layout'
-import { MapPin, Phone, Mail } from 'lucide-react'
+import { useState } from 'react';
+import Layout from '../components/Layout';
+import { MapPin, Phone, Mail } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
-  })
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prevData => ({ ...prevData, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setStatus('loading')
+    e.preventDefault();
+    setStatus('loading');
+    setErrorMessage('');
 
     try {
       const response = await fetch('/api/contact', {
@@ -28,18 +30,25 @@ export default function Contact() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-      })
+      });
+
+      const result = await response.json();
 
       if (response.ok) {
-        setStatus('success')
-        setFormData({ name: '', email: '', message: '' })
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        alert('Message sent successfully!');
       } else {
-        setStatus('error')
+        setStatus('error');
+        setErrorMessage(result.details || 'An error occurred. Please try again.');
+        alert(`Failed to send message: ${result.details || 'Unknown error'}`);
       }
     } catch (error) {
-      setStatus('error')
+      setStatus('error');
+      setErrorMessage('An unexpected error occurred.');
+      alert('An unexpected error occurred. Please try again.');
     }
-  }
+  };
 
   return (
     <Layout
@@ -61,7 +70,7 @@ export default function Contact() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent"
+                    className="w-full px-4 py-2 border rounded-lg bg-white text-black focus:ring-2 focus:ring-primary-blue focus:border-transparent"
                     required
                   />
                 </div>
@@ -73,7 +82,7 @@ export default function Contact() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent"
+                    className="w-full px-4 py-2 border rounded-lg bg-white text-black focus:ring-2 focus:ring-primary-blue focus:border-transparent"
                     required
                   />
                 </div>
@@ -85,7 +94,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-blue focus:border-transparent"
+                    className="w-full px-4 py-2 border rounded-lg bg-white text-black focus:ring-2 focus:ring-primary-blue focus:border-transparent"
                     required
                   ></textarea>
                 </div>
@@ -96,12 +105,6 @@ export default function Contact() {
                 >
                   {status === 'loading' ? 'Sending...' : 'Send Message'}
                 </button>
-                {status === 'success' && (
-                  <p className="text-primary-green font-semibold">Message sent successfully!</p>
-                )}
-                {status === 'error' && (
-                  <p className="text-red-500 font-semibold">An error occurred. Please try again.</p>
-                )}
               </form>
             </div>
             <div>
@@ -113,7 +116,7 @@ export default function Contact() {
                 </div>
                 <div className="flex items-center">
                   <Phone className="text-primary-green mr-4" size={24} />
-                  <p className="text-text-dark">+234 123 456 7890</p>
+                  <p className="text-text-dark">+234 903 023 0625</p>
                 </div>
                 <div className="flex items-center">
                   <Mail className="text-primary-green mr-4" size={24} />
@@ -131,6 +134,5 @@ export default function Contact() {
         </div>
       </section>
     </Layout>
-  )
+  );
 }
-

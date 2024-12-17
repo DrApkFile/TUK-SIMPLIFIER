@@ -56,13 +56,13 @@ export default function Services() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                <h2 className="text-2xl font-semibold mb-4">{service.title}</h2>
+                <h2 className="text-2xl font-bold mb-4 text-gray-800">{service.title}</h2>
                 <p className="text-gray-600 mb-6">{service.description}</p>
                 <ul className="space-y-2">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center">
                       <CheckCircle className="text-green-500 mr-2" size={20} />
-                      <span>{feature}</span>
+                      <span className="text-gray-800">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -74,4 +74,3 @@ export default function Services() {
     </Layout>
   )
 }
-
