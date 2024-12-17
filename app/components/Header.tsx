@@ -32,7 +32,6 @@ const Header = () => {
           <Link href="/services" className="block py-2 hover:text-primary-yellow transition-colors">Services</Link>
           <Link href="/about" className="block py-2 hover:text-primary-yellow transition-colors">About Us</Link>
           <Link href="/contact" className="block py-2 hover:text-primary-yellow transition-colors">Contact</Link>
-          <Link href="/blog" className="block py-2 hover:text-primary-yellow transition-colors">Blog</Link>
           <Link href="/faq" className="block py-2 hover:text-primary-yellow transition-colors">FAQs</Link>
         </nav>
       )}
