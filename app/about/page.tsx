@@ -13,7 +13,7 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <Image
-                src="/placeholder.svg?height=400&width=600"
+                src="/Owner.jpg"
                 alt="TUK SIMPLIFIERS LTD Team"
                 width={600}
                 height={400}

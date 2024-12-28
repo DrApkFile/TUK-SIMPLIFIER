@@ -23,7 +23,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
             <p className="text-sm mb-2">17, Ogundana Street, Off Allen Avenue, Ikeja, Lagos.</p>
             <p className="text-sm mb-2">Phone: +234 903 023 0625</p>
-            <p className="text-sm mb-2">Email: nigerianfiah@gmail.com</p>
+            <p className="text-sm mb-2">Email: tuksimplifiers@gmail.com</p>
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-700">

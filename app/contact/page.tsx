@@ -120,7 +120,7 @@ export default function Contact() {
                 </div>
                 <div className="flex items-center">
                   <Mail className="text-primary-green mr-4" size={24} />
-                  <p className="text-text-dark">nigerianfiah@gmail.com</p>
+                  <p className="text-text-dark">tuksimplifiers@gmail.com</p>
                 </div>
               </div>
               <div className="mt-8">
